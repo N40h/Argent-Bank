@@ -3,10 +3,10 @@ import { createSlice } from '@reduxjs/toolkit';
 const userSlice = createSlice({
 	name: 'user',
 	initialState: {
-		email: null,
-		firstName: null,
-		lastName: null,
-		userName: null,
+		email: '',
+		firstName: '',
+		lastName: '',
+		userName: '',
 	},
 	reducers: {
 		setUser: (state, action) => {
@@ -19,10 +19,10 @@ const userSlice = createSlice({
 			state.userName = action.payload;
 		},
 		resetUserProfile: (state) => {
-			state.email = null;
-			state.firstName = null;
-			state.lastName = null;
-			state.userName = null;
+			state.email = '';
+			state.firstName = '';
+			state.lastName = '';
+			state.userName = '';
 		},
 	},
 });

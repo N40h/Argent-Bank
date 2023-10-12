@@ -7,7 +7,7 @@ import { resetUserProfile } from "../../redux/reducers/userSlice";
 
 export default function Navbar() {    
     const token = useSelector((state) => state.auth.token)
-    const firstName = useSelector((state) => state.user.firstName)
+    const userName = useSelector((state) => state.user.userName)
 
     const dispatch = useDispatch();
 
@@ -26,7 +26,7 @@ export default function Navbar() {
                 </Link>
                 <div>
                     <Link to="/profile" className="main-nav-item">
-                        <i className="fa fa-user-circle"></i>{firstName}
+                        <i className="fa fa-user-circle"></i>{userName}
                     </Link>
                     <Link to="/" className="main-nav-item" onClick={handleClick}>
                         <i className="fa fa-sign-out"></i>Sign Out

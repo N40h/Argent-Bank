@@ -6,6 +6,8 @@ import SecurityIcon from "../../assets/icon-security.png"
 import FeatureItem from "../../components/FeatureItem/FeatureItem"
 
 export default function Home() {
+    document.title = "Argent Bank - Home"
+
     return (
         <main>
             <Hero />

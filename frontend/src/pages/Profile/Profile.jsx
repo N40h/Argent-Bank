@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from "react-redux"
 import { profileUser } from "../../redux/services/api";
 
 export default function Profile() {
+    document.title = "Argent Bank - Profile"
+
     const token = useSelector((state) => state.auth.token)
     const dispatch = useDispatch();
 

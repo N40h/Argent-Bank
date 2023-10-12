@@ -1,18 +1,20 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../../redux/services/api";
 
 export default function SignInForm() {
-    const [formData, setFormData] = useState({ email: '', password: '' });
-    const { email, password } = formData;
+    const token = useSelector((state) => state.auth.token)
+
+    const [formData, setFormData] = useState({ email: '', password: '', remember: false });
+    const { email, password, remember } = formData;
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const handleChange = (event) => {
-        const { name, value } = event.target;
-        setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
+        const { name, value, type, checked } = event.target;
+        setFormData((prevFormData) => ({ ...prevFormData, [name]: type === 'checkbox' ? checked : value }));
     };
 
     const handleSubmit = async (event) => {
@@ -22,6 +24,10 @@ export default function SignInForm() {
         if (success) {
             navigate("/profile");
         }
+    }
+
+    if (remember) {
+        sessionStorage.setItem('token', token)
     }
 
     return (
@@ -35,7 +41,7 @@ export default function SignInForm() {
                 <input type="password" id="password" name="password" onChange={handleChange} value={formData.password}/>
             </div>
             <div className="input-remember">
-                <input type="checkbox" id="remember-me" />
+                <input type="checkbox" id="remember-me" name="remember" onChange={handleChange} checked={formData.remember} />
                 <label htmlFor="remember">Remember me</label>
             </div>
             <button className="sign-in-button" type="submit">Sign In</button>
