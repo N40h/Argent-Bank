@@ -79,7 +79,6 @@ export const editUser = (token, userName) => {
 				const newUserName = data.body.userName;
 
 				dispatch(editUserProfile(newUserName));
-				console.log(data);
 				return { success: true };
 			}
 		} catch (error) {
