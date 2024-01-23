@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { editUser } from '../../redux/services/api'
 import { editUserProfile } from '../../redux/reducers/userSlice'
 
-export default function EditName({ onCancel }) {
+export default function EditName({ onCancel, onSave }) {
     const token = useSelector((state) => state.auth.token)
     const firstName = useSelector((state) => state.user.firstName)
     const lastName = useSelector((state) => state.user.lastName)
@@ -23,13 +23,14 @@ export default function EditName({ onCancel }) {
         const { success } = await dispatch(editUser(token, newUserName))
 
         if (success) {
-            dispatch(editUserProfile(newUserName))
+            dispatch(editUserProfile(newUserName));
+            onSave();
         }        
     }
 
     const handleCancel = () => {
-        setNewUserName(userName)
-        onCancel()
+        setNewUserName(userName);
+        onCancel();
     }
 
     return (

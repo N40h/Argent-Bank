@@ -302,6 +302,18 @@ body {
   color: #fff;
 }
 
+.error {
+  border: 1px solid red;
+}
+
+.error-message {
+  color: red;
+}
+
+.collapse {
+  display: none;
+}
+
 @media (min-width: 720px) {
   .account {
     flex-direction: row;

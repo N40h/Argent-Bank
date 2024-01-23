@@ -11,7 +11,7 @@ export default function UserHeader() {
         setIsEditingName(!isEditingName)
     }
 
-    const handleCancelEdit = () => {
+    const handleEdit = () => {
         setIsEditingName(false)
     }
 
@@ -19,7 +19,7 @@ export default function UserHeader() {
         <div className="header">
             {!isEditingName && <h1>Welcome back<br />{user.firstName + " " + user.lastName + "!"}</h1> }
             {isEditingName
-                ? (<EditName onCancel={handleCancelEdit} />)
+                ? (<EditName onCancel={handleClick} onSave={handleEdit} />)
                 : (<button className="edit-button" onClick={handleClick}>Edit Name</button>)
             }
         </div>
