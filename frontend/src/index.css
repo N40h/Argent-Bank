@@ -310,10 +310,6 @@ body {
   color: red;
 }
 
-.collapse {
-  display: none;
-}
-
 @media (min-width: 720px) {
   .account {
     flex-direction: row;
